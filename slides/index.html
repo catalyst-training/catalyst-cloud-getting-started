@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>Getting started with the Catalyst Cloud - Catalyst Training</title>
+
+        <meta name="author" content="Catalyst">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/catalyst.css" id="theme">
+        <link rel="stylesheet" href="css/font-awesome.css">
+
+        <!-- For syntax highlighting -->
+        <!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+        <link rel="stylesheet" href="lib/css/catalyst-syntax.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <style>
+            /* Add the ability to omit slides from the printed version (has to be after the print include)*/
+            @media print {
+                .reveal .slides section.no-print {
+                    display: none !important;
+                    visibility: hidden !important;
+                }
+            }
+        </style>
+        <style>
+            .reveal h1, .reveal h2, .reveal h3 {
+                color: #ba2025;
+            }
+        </style>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+
+        <!-- Please put any custom styles here -->
+        <style>
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <!-- Cover slide -->
+                <section>
+                    <h1 class="catalyst-logo">Catalyst</h1>
+                    <h3>Getting started with the Catalyst Cloud</h3>
+                    <p class="small-text">
+                        Presented by <a href="#">Donovan Jones</a>
+                    </p>
+                </section>
+
+                <section>
+                    <h3>This course</h3>
+                    <ul>
+                        <li>Makes use of the <a href="http://docs.catalystcloud.io/">Catalyst Cloud Documentation</a></li>
+                        <li>A mix of web dashboard, command line and theory</li>
+                        <li>Assumes no prior cloud knowledge</li>
+                        <li>Assumes familiarity with the linux shell</li>
+                        <li>Assumes we are using Ubuntu (trusty)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Aims</h3>
+                    <ul>
+                        <li>Understand the basic features of the catalyst cloud so you can create your own stacks</li>
+                        <li>Gain familiarity with the <a href="http://docs.catalystcloud.io/">Catalyst Cloud Documentation</a></li>
+                        <li>Get people to think about how architect stacks in a cloud native fashion</li>
+                        <li>Gain familiarity with different methods for building stacks</li>
+                    </ul>
+                </section>
+
+                <section>
+                <section>
+                    <h3>What is the Cloud Computing?</h3>
+                    <p>The NIST Definition of Cloud Computing lists five essential characteristics of Cloud Computing:</p>
+                    <ul>
+                        <li>On-demand self-service</li>
+                        <li>Broad network access</li>
+                        <li>Resource pooling</li>
+                        <li>Rapid elasticity</li>
+                        <li>Measured service</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>On-demand self-service</h3>
+                    <p>A consumer can unilaterally provision computing capabilities, such as server time and network storage, as needed automatically without requiring human interaction with each service provider.</p>
+                </section>
+                <section>
+                    <h3>Broad network access</h3>
+                    <p>Capabilities are available over the network and accessed through standard mechanisms that promote use by heterogeneous thin or thick client platforms (e.g., mobile phones, tablets, laptops, and workstations).</p>
+                </section>
+                <section>
+                    <h3>Resource pooling</h3>
+                    <p>The provider's computing resources are pooled to serve multiple consumers using a multi-tenant model, with different physical and virtual resources dynamically assigned and reassigned according to consumer demand. There is a sense of location independence in that the customer generally has no control or knowledge over the exact location of the provided resources but may be able to specify location at a higher level of abstraction (e.g., country, state, or datacenter). Examples of resources include storage, processing, memory, and network bandwidth.</p>
+                </section>
+                <section>
+                    <h3>Rapid elasticity</h3>
+                    <p>Capabilities can be elastically provisioned and released, in some cases automatically, to scale rapidly outward and inward commensurate with demand. To the consumer, the capabilities available for provisioning often appear to be unlimited and can be appropriated in any quantity at any time.</p>
+                </section>
+                <section>
+                    <h3>Measured service</h3>
+                    <p>Cloud systems automatically control and optimize resource use by leveraging a metering capability at some level of abstraction appropriate to the type of service (e.g., storage, processing, bandwidth, and active user accounts). Typically this is done on a pay-per-use or charge-per-use basis. Resource usage can be monitored, controlled, and reported, providing transparency for both the provider and consumer of the utilized service.</p>
+                </section>
+                </section>
+
+                <section>
+                <section>
+                    <h3>OpenStack Overview</h3>
+                    <ul>
+                        <li>What is OpenStack?</li>
+                        <li>OpenStack services</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>What is OpenStack?</h3>
+                    <ul>
+                        <li>A "cloud operating system"</li>
+                        <li>Sits above your infrastructure</li>
+                        <li>Provides an API to interact with that infrastructure</li>
+                        <li>API provides operations like Create/Delete/Update for various components</li>
+                        <li>Command line tools, libraries, dashboard all interact with services via the API</li>
+                    </ul>
+                </section>
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>What is OpenStack?</h2>
+                    <img src="img/Openstack-software-diagram.png" alt="Openstack-software-diagram">
+                </section>
+                <section>
+                    <h3>OpenStack services</h3>
+                    <ul>
+                        <li>Dashboard (Horizon)</li>
+                        <li>Compute (Nova)</li>
+                        <li>Networking (Neutron)</li>
+                        <li>Object Storage (Swift)</li>
+                        <li>Block Storage (Cinder)</li>
+                        <li>Identity Service (Keystone)</li>
+                        <li>Image Service (Glance)</li>
+                        <li>Telemetry Service (Ceilometer)</li>
+                        <li>Orchestration Service (Heat)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Dashboard (Horizon)</h3>
+                    <p>Provides a web-based self-service portal to interact with underlying OpenStack services, such as launching an instance, assigning IP addresses and configuring access controls.</p>
+                </section>
+                <section>
+                    <h3>Compute (Nova)</h3>
+                    <p>Manages the lifecycle of compute instances in an OpenStack environment. Responsibilities include spawning, scheduling and decomissioning of machines on demand.</p>
+                </section>
+                <section>
+                    <h3>Networking (Neutron)</h3>
+                    <p>Enables network connectivity as a service for other OpenStack services, such as OpenStack Compute. Provides an API for users to define networks and the attachments into them. Has a pluggable architecture that supports many popular networking vendors and technologies.</p>
+                </section>
+                <section>
+                    <h3>Object Storage (Swift)</h3>
+                    <p>Stores and retrieves arbitrary unstructured data objects via a RESTful, HTTP based API. It is highly fault tolerant with its data replication and scale out architecture. Its implementation is not unlike a file server with mountable directories.</p>
+                </section>
+                <section>
+                    <h3>Block Storage (Cinder)</h3>
+                    <p>Provides persistent block storage to running instances. Its pluggable driver architecture facilitates the creation and management of block storage devices.</p>
+                </section>
+                <section>
+                    <h3>Identity Service (Keystone)</h3>
+                    <p>Provides an authentication and authorization service for other OpenStack services. Provides a catalog of endpoints for all OpenStack services.</p>
+                </section>
+                <section>
+                    <h3>Image Service (Glance)</h3>
+                    <p>Stores and retrieves virtual machine disk images. OpenStack Compute makes use of this during instance provisioning.</p>
+                </section>
+                <section>
+                    <h3>Telemetry Service (Ceilometer)</h3>
+                    <p>Monitors and meters the OpenStack cloud for billing, benchmarking, scalability, and statistical purposes.</p>
+                </section>
+                <section>
+                    <h3>Orchestration Service (Heat)</h3>
+                    <p>Orchestrates multiple composite cloud applications by using either the native HOT template format or the AWS CloudFormation template format, through both an OpenStack-native REST API and a CloudFormation-compatible Query API.</p>
+                </section>
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Openstack Architecture</h2>
+                    <img src="img/Openstack_havana_conceptual_arch.png" alt="Openstack_conceptual_arch" height="600" width="800">
+                </section>
+
+                </section>
+
+                <section>
+                <section>
+                    <h3>Architecting for the cloud</h3>
+                    <ul>
+                        <li><a href="http://radar.oreilly.com/2015/06/an-introduction-to-immutable-infrastructure.html">Immutable infrastructure</a></li>
+                        <li><a href="https://blog.engineyard.com/2014/pets-vs-cattle">Cattle vs pets</a></li>
+                        <li><a href="http://martinfowler.com/bliki/SnowflakeServer.html">Snowflake Servers</a> vs. <a href="http://martinfowler.com/bliki/PhoenixServer.html">Phoenix Servers</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Immutable Architecture/Infrastructure</h3>
+                    <ul>
+                        <li>Phoenix servers</li>
+                        <li>The environment is defined in code</li>
+                        <li>If you need to change _anything_ you create a new instance and destroy the old one</li>
+                    </ul>
+                </section>
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Immutable Architecture</h2>
+                    <img src="http://s.radar.oreilly.com/wp-files/2/2015/06/immutable_infrastructure.gif" alt="Immutable Architecture" height="600" width="800">
+                </section>
+                <section>
+                    <h3>Orchestration</h3>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/cloudformation/">AWS CloudFormation</a></li>
+                        <li><a href="https://wiki.openstack.org/wiki/Heat">OpenStack Heat</a></li>
+                        <li><a href="https://www.ansible.com/">Ansible</a></li>
+                        <li><a href="https://www.redhat.com/en/technologies/cloud-computing/cloudforms">Red Hat CloudForms</a></li>
+                        <li><a href="https://www.terraform.io/">Hashicorp Terraform</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Configuration Management</h3>
+                    <ul>
+                        <li><a href="https://saltstack.com/">Salt</a></li>
+                        <li><a href="https://puppetlabs.com/">Puppet</a></li>
+                        <li><a href="https://www.chef.io/">Chef</a></li>
+                        <li><a href="https://www.ansible.com/">Ansible</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Automated Application Deployment</h3>
+                    <ul>
+                        <li><a href="http://www.fabfile.org/">Fabric</a></li>
+                        <li><a href="http://capistranorb.com/">Capistrano</a></li>
+                        <li><a href="https://www.ansible.com/">Ansible</a></li>
+                    </ul>
+                </section>
+                </section>
+
+                <section>
+                <section>
+                    <h3>First Instance overview</h3>
+                    <p>We are going to create an instance and its associated components using a number of different methods both manual and automated.</p>
+                </section>
+
+                <section>
+                    <h3>First Instance components</h3>
+                    <ul>
+                        <li>Review <a href="http://docs.catalystcloud.io/first-instance.html">http://docs.catalystcloud.io/first-instance.html</a></li>
+                        <li>Routers</li>
+                        <li>Security Groups</li>
+                        <li>Networks</li>
+                        <li>Subnets</li>
+                        <li>Compute Flavors</li>
+                        <li>Operating System Images</li>
+                        <li>SSH Keypairs</li>
+                        <li>Floating IPs</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>First Instance creation steps</h3>
+                    <ol>
+                        <li>Create a Network and Subnet</li>
+                        <li>Create a Router</li>
+                        <li>Upload an SSH keypair</li>
+                        <li>Create a security group</li>
+                        <li>Launch an instance</li>
+                        <li>Associate a floating IP</li>
+                        <li>Log in to your instance</li>
+                        <li>Delete everything and start again</li>
+                    </ol>
+                </section>
+
+                <section>
+                    <h3>First Instance creation methods</h3>
+                    <ul>
+                        <li>Dashboard</li>
+                        <li>Command Line</li>
+                        <li>Ansible</li>
+                        <li>Heat</li>
+                        <li>Python SDK</li>
+                    </ul>
+                </section>
+                </section>
+
+                <section>
+                <section>
+                    <h3>Training room settings</h3>
+                    <ul>
+                        <li>Sharing a router (border-router)</li>
+                        <li>Prefix all resource names with trainN-</li>
+                        <li>Three students in por, three in wlg</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Training room settings</h3>
+                    <pre><code data-trim contenteditable>
+ROUTER_NAME="border-router"
+PRIVATE_NETWORK_NAME="train1-private-net"
+PRIVATE_SUBNET_NAME="train1-private-subnet"
+PRIVATE_SUBNET_CIDR="10.0.1.0/24"
+SSH_KEY_NAME="train1-first-instance-key"
+INSTANCE_NAME="train1-first-instance"
+SECURITY_GROUP_NAME="train1-first-instance"
+FLAVOR_NAME="c1.c1r1"
+IMAGE_NAME="ubuntu-14.04-x86_64"
+                    </code></pre>
+                </section>
+                </section>
+
+                <section>
+                    <h3>First Instance using the dashboard</h3>
+                    <ul>
+                        <li><a href="http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-from-the-dashboard">http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-from-the-dashboard</a></li>
+                        <li>Sharing a router (border-router)</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Tools clients and credentials</h3>
+                    <ul>
+                        <li><a href="http://docs.catalystcloud.io/getting-started.html#command-line-tools">http://docs.catalystcloud.io/getting-started.html#command-line-tools</a></li>
+                        <li>Install clients</li>
+                        <li>Source an OpenStack RC file</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>First Instance using the command line</h3>
+                    <ul>
+                        <li><a href="http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-from-the-command-line">http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-from-the-command-line</a></li>
+                        <li>Continue to use the custom training room settings</li>
+                        <li>You will need to edit commands</li>
+                        <li>After you have done it manually you can try running the bash script</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>First Instance using Ansible</h3>
+                    <ul>
+                        <li><a href="http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-using-ansible">http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-using-ansible</a></li>
+                        <li>Clone catalystcloud-ansible repo</li>
+                        <li>Install Ansible</li>
+                        <li>One student to run create-network playbook ...</li>
+                        <li>All students edit launch-instance playbook</li>
+                        <li>All students to create instances on the same network</li>
+                        <li>Students can edit create-network to create their own networks</li>
+                    </ul>
+                </section>
+
+                <section>
+                <section>
+                    <h3>First Instance using Heat</h3>
+                    <ul>
+                        <li><a href="http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-using-heat">http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-using-heat</a></li>
+                        <li>Clone orchestration repo</li>
+                        <li>Upload SSH key</li>
+                        <li>One student at a time per region ...</li>
+                        <li>stackcreate</li>
+                        <li>stackdelete</li>
+                        <li>or ... update parameters</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Update Heat parameters</h3>
+                    <ul>
+                        <li>key_name</li>
+                        <li>private_net_name</li>
+                        <li>private_subnet_name</li>
+                        <li>private_net_cidr</li>
+                        <li>private_net_gateway</li>
+                        <li>private_net_pool_start</li>
+                        <li>private_net_pool_end</li>
+                        <li>router_name</li>
+                        <li>secgroup_name</li>
+                        <li>host_name</li>
+                    </ul>
+                </section>
+                </section>
+
+                <section>
+                    <h3>First Instance using a Python SDK</h3>
+                    <ul>
+                        <li><a href="http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-using-a-sdk">http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-using-a-sdk</a></li>
+                        <li>Install libcloud</li>
+                        <li>Setup the networks and router manually</li>
+                        <li>keypair_name = 'train1-first-instance-key'</li>
+                        <li>security_group_name = 'train1-first-instance'</li>
+                        <li>instance_name = 'train1-first-instance'</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Review Tutorials</h3>
+                    <ul>
+                        <li><a href="http://docs.catalystcloud.io/tutorials.html">http://docs.catalystcloud.io/tutorials.html</a></li>
+                    </ul>
+                </section>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'none', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
