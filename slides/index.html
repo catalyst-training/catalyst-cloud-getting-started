@@ -212,11 +212,24 @@
                 <section>
                     <h3>Architecting for the cloud</h3>
                     <ul>
-                        <li><a href="http://radar.oreilly.com/2015/06/an-introduction-to-immutable-infrastructure.html">Immutable infrastructure</a></li>
                         <li><a href="https://blog.engineyard.com/2014/pets-vs-cattle">Cattle vs pets</a></li>
                         <li><a href="http://martinfowler.com/bliki/SnowflakeServer.html">Snowflake Servers</a> vs. <a href="http://martinfowler.com/bliki/PhoenixServer.html">Phoenix Servers</a></li>
+                        <li><a href="http://radar.oreilly.com/2015/06/an-introduction-to-immutable-infrastructure.html">Immutable infrastructure</a></li>
                         <li>MTTR > MTBF</li>
                     </ul>
+                </section>
+                <section>
+                    <h3>Immutable Architecture/Infrastructure</h3>
+                    <ul>
+                        <li>Phoenix servers</li>
+                        <li>The environment is defined in code</li>
+                        <li>If you need to change _anything_ you create a new instance and destroy the old one</li>
+                    </ul>
+                </section>
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Immutable Architecture</h2>
+                    <img src="http://s.radar.oreilly.com/wp-files/2/2015/06/immutable_infrastructure.gif" alt="Immutable Architecture" height="600" width="800">
                 </section>
                 <section>
                     <h3>MTTR > MTBF</h3>
@@ -242,18 +255,19 @@
                         <li>Netflix Chaos Tools</li>
                     </ul>
                 </section>
-                <section>
-                    <h3>Immutable Architecture/Infrastructure</h3>
-                    <ul>
-                        <li>Phoenix servers</li>
-                        <li>The environment is defined in code</li>
-                        <li>If you need to change _anything_ you create a new instance and destroy the old one</li>
-                    </ul>
                 </section>
-                <!-- Large image slide -->
-                <section class="image-slide">
-                    <h2>Immutable Architecture</h2>
-                    <img src="http://s.radar.oreilly.com/wp-files/2/2015/06/immutable_infrastructure.gif" alt="Immutable Architecture" height="600" width="800">
+
+                <section>
+                <section>
+                    <h3>Automation</h3>
+                    <ul>
+                        <li>Orchestration</li>
+                        <li>Configuration Management</li>
+                        <li>Application Deployment</li>
+                        <li>Provisioning</li>
+                        <li>Security &amp; Compliance</li>
+
+                    </ul>
                 </section>
                 <section>
                     <h3>Orchestration</h3>
@@ -280,6 +294,7 @@
                         <li><a href="http://www.fabfile.org/">Fabric</a></li>
                         <li><a href="http://capistranorb.com/">Capistrano</a></li>
                         <li><a href="https://www.ansible.com/">Ansible</a></li>
+                        <li><a href="https://www.thoughtworks.com/go/">GoCD</a></li>
                     </ul>
                 </section>
                 </section>
@@ -335,22 +350,22 @@
                 <section>
                     <h3>Training room settings</h3>
                     <ul>
-                        <li>Sharing a router (border-router)</li>
-                        <li>Prefix all resource names with trainN-</li>
-                        <li>Three students in por, three in wlg</li>
+                        <li>Prefix all resource names with yourname-</li>
+                        <li>eg: yourname-border-router, yourname-private-net</li>
+                        <li>Use your training PC number as the third octet in your network</li>
                     </ul>
                 </section>
 
                 <section>
                     <h3>Training room settings</h3>
                     <pre><code data-trim contenteditable>
-ROUTER_NAME="border-router"
-PRIVATE_NETWORK_NAME="train1-private-net"
-PRIVATE_SUBNET_NAME="train1-private-subnet"
+ROUTER_NAME="yourname-border-router"
+PRIVATE_NETWORK_NAME="yourname-private-net"
+PRIVATE_SUBNET_NAME="yourname-private-subnet"
 PRIVATE_SUBNET_CIDR="10.0.1.0/24"
-SSH_KEY_NAME="train1-first-instance-key"
-INSTANCE_NAME="train1-first-instance"
-SECURITY_GROUP_NAME="train1-first-instance"
+SSH_KEY_NAME="yourname-first-instance-key"
+INSTANCE_NAME="yourname-first-instance"
+SECURITY_GROUP_NAME="yourname-first-instance"
 FLAVOR_NAME="c1.c1r1"
 IMAGE_NAME="ubuntu-14.04-x86_64"
                     </code></pre>
@@ -361,7 +376,6 @@ IMAGE_NAME="ubuntu-14.04-x86_64"
                     <h3>First Instance using the dashboard</h3>
                     <ul>
                         <li><a href="http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-from-the-dashboard">http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-from-the-dashboard</a></li>
-                        <li>Sharing a router (border-router)</li>
                     </ul>
                 </section>
 
@@ -428,21 +442,34 @@ IMAGE_NAME="ubuntu-14.04-x86_64"
                 </section>
 
                 <section>
+                    <h3>Review Resources</h3>
+                    <ul>
+                        <li><a href="http://docs.catalystcloud.io/tutorials.html">Tutorials</a></li>
+                        <li><a href="https://github.com/catalyst/catalystcloud-ansible">Ansible Repo</a></li>
+                        <li><a href="https://github.com/catalyst/catalystcloud-orchestration">Orchestration Repo</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Excersises</h3>
+                    <ul>
+                        <li>Use the <a href="http://docs.catalystcloud.io/network.html#virtual-private-networks">docs</a> to setup a Region to Region VPN (one person per region)</li>
+                        <li>Have a go setting up a stack using HEAT Templates in the <a href="https://github.com/catalyst/catalystcloud-orchestration">Orchestration Repo</a></li>
+                        <li>Have a go at one of the example playbooks in <a href="https://github.com/catalyst/catalystcloud-ansible">Ansible Repo</a></li>
+                        <li>Have a go at setting up your fist instance using python (see next slide)</li>
+                        <li>Follow one of the <a href="http://docs.catalystcloud.io/tutorials.html">tutorials</a> that looks interesting</li>
+                    </ul>
+                </section>
+
+                <section>
                     <h3>First Instance using a Python SDK</h3>
                     <ul>
                         <li><a href="http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-using-a-sdk">http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-using-a-sdk</a></li>
                         <li>Install libcloud</li>
                         <li>Setup the networks and router manually</li>
-                        <li>keypair_name = 'train1-first-instance-key'</li>
-                        <li>security_group_name = 'train1-first-instance'</li>
-                        <li>instance_name = 'train1-first-instance'</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h3>Review Tutorials</h3>
-                    <ul>
-                        <li><a href="http://docs.catalystcloud.io/tutorials.html">http://docs.catalystcloud.io/tutorials.html</a></li>
+                        <li>keypair_name = 'yourname-first-instance-key'</li>
+                        <li>security_group_name = 'yourname-first-instance'</li>
+                        <li>instance_name = 'yourname-first-instance'</li>
                     </ul>
                 </section>
 
