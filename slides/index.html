@@ -139,7 +139,7 @@
                     <h3>What is OpenStack?</h3>
                     <ul>
                         <li>A "cloud operating system"</li>
-                        <li>Sits above your infrastructure</li>
+                        <li>Sits above your infrastructure providing IaaS</li>
                         <li>Provides an API to interact with that infrastructure</li>
                         <li>API provides operations like Create/Delete/Update for various components</li>
                         <li>Command line tools, libraries, dashboard all interact with services via the API</li>
@@ -205,7 +205,10 @@
                     <h2>Openstack Architecture</h2>
                     <img src="img/Openstack_havana_conceptual_arch.png" alt="Openstack_conceptual_arch" height="600" width="800">
                 </section>
-
+                <section>
+                    <h3>Project Navigator</h3>
+                    <p><a href="https://www.openstack.org/software/">Project Navigator</a></p>
+                </section>
                 </section>
 
                 <section>
@@ -238,8 +241,8 @@
                         <li>MTBF = Mean Time Between Failures</li>
                         <li>MTTF = Mean Time To Failure</li>
                         <li>MTTD = Mean Time To Detection</li>
-                        <li>A Low MTTR requires a good MTTD</li>
-                        <li>A Low MTTD requires a good Monitoring</li>
+                        <li>A low MTTR requires a low MTTD</li>
+                        <li>A low MTTD requires a good Monitoring</li>
                     </ul>
                 </section>
                 <section class="image-slide">
@@ -321,6 +324,26 @@
                 </section>
 
                 <section>
+                    <h3>Floating IPs</h3>
+                    <ul>
+                        <li>Map to internal IPs</li>
+                        <li>Allocate and Release</li>
+                        <li>Associate and Dissasociate</li>
+                        <li>Need to keep allocated if you need to "reserve" an IP</li>
+                        <li>You will be charged for allocated IPs</li>
+
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Security Groups</h3>
+                    <ul>
+                        <li>Are not the same a firewall rules!</li>
+                        <li>E/W vs. N/S traffic filtering.</li>
+                    </ul>
+                </section>
+
+                <section>
                     <h3>First Instance creation steps</h3>
                     <ol>
                         <li>Create a Network and Subnet</li>
@@ -341,7 +364,6 @@
                         <li>Command Line</li>
                         <li>Heat</li>
                         <li>Ansible</li>
-                        <li>Python SDK</li>
                     </ul>
                 </section>
                 </section>
@@ -429,6 +451,128 @@ IMAGE_NAME="ubuntu-14.04-x86_64"
                 </section>
 
                 <section>
+                <section>
+                    <h3>Ansible in 5 minutes</h3>
+                    <ul>
+                        <li>General purpose Automation tool</li>
+                        <li>Agentless</li>
+                        <li>Python and SSH</li>
+                        <li>Push not poll</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>The basics</h3>
+                        <ul>
+                            <li>SSH to a host or list of hosts (group) and execute commands</li>
+                            <li>Inventories: a list of hosts</li>
+                                <ul>
+                                    <li>/etc/ansible/hosts</li>
+                                </ul>
+                            <li>ansible vs. ansible-playbook</li>
+                                <ul>
+                                    <li>ad hoc commands (cssh style)</li>
+                                    <li>commands in a playbook</li>
+                                </ul>
+                            </li>
+                        </ul>
+                </section>
+                <section>
+                    <h3>Playbooks</h3>
+                        <ul>
+                            <li>YAML</li>
+                            <ul>
+                                <li>Plays</li>
+                                <ul>
+                                    <li>Hosts</li>
+                                    <li>Roles</li>
+                                    <li>Tasks</li>
+                                    <li>Handlers</li>
+                                </ul>
+                            </ul>
+                        </ul>
+                </section>
+                <section>
+                    <h3>Playbook primatives</h3>
+                    <ul>
+                        <li>Variables</li>
+                        <li>Templates (jinja2)</li>
+                        <li>Conditionals</li>
+                        <li>Loops</li>
+                        <li>Blocks</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Modules</h3>
+                    <ul>
+                        <li>Blob of python</li>
+                        <li>Map to tasks</li>
+                        <li>SCP to temporary directory on target host</li>
+                        <li>Execute python on target host</li>
+                        <li>Returns JSON</li>
+                        <li>Code removed</li>
+                        <li>Local Ansible evaluates returned JSON</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Idempotence</h3>
+                    <ul>
+                        <li>Make the same request repeatedly to produce the same result</li>
+                        <li>ok = I checked and the thing you wanted was already done so I skipped doing it</li>
+                        <li>changed = I checked and the thing you wanted was not done so I did it</li>
+                        <li>Handlers - multiple notifies will only trigger one reload at end of play</li>
+                    </ul>
+                    <pre><code data-trim contenteditable>
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=4    unreachable=0    failed=0
+
+...
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=6    changed=0    unreachable=0    failed=0
+                    </code></pre>
+                </section>
+                <section>
+                    <h3>Localhost?</h3>
+                    <ul>
+                        <li>Cloud modules are localhost tasks</li>
+                        <li>Tasks map to modules</li>
+                        <li>Modules make API calls in the background</li>
+                        <li>OpenStack modules use shade</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Cloud Modules</h3>
+                    <p><a href="https://docs.ansible.com/ansible/list_of_cloud_modules.html">https://docs.ansible.com/ansible/list_of_cloud_modules.html</a></p>
+                </section>
+                <section>
+                    <h3>Cloud Modules</h3>
+                    <ul>
+                        <li>Amazon (64)</li>
+                        <li>Azure (2)</li>
+                        <li>Centurylink (13)</li>
+                        <li>Cloudstack (32)</li>
+                        <li>Digital Ocean (3)</li>
+                        <li>Docker (3)</li>
+                        <li>Google (7)</li>
+                        <li>Linode (1)</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Cloud Modules</h3>
+                    <ul>
+                        <li>Lxc (1)</li>
+                        <li>Misc (6)</li>
+                        <li>Openstack (50)</li>
+                        <li>Profitbricks (5)</li>
+                        <li>Rackspace (29)</li>
+                        <li>Softlayer (1)</li>
+                        <li>Vmware (26)</li>
+                        <li>Webfaction (8)</li>
+                    </ul>
+                </section>
+                </section>
+
+                <section>
                     <h3>First Instance using Ansible</h3>
                     <ul>
                         <li><a href="http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-using-ansible">http://docs.catalystcloud.io/first-instance.html#launching-your-first-instance-using-ansible</a></li>
@@ -442,6 +586,7 @@ IMAGE_NAME="ubuntu-14.04-x86_64"
                     <h3>Review Resources</h3>
                     <ul>
                         <li><a href="http://docs.catalystcloud.io/tutorials.html">Tutorials</a></li>
+                        <li><a href="http://docs.catalystcloud.io/faq.html">FAQs</a></li>
                         <li><a href="https://github.com/catalyst/catalystcloud-ansible">Ansible Repo</a></li>
                         <li><a href="https://github.com/catalyst/catalystcloud-orchestration">Orchestration Repo</a></li>
                     </ul>
@@ -450,10 +595,12 @@ IMAGE_NAME="ubuntu-14.04-x86_64"
                 <section>
                     <h3>Exercises</h3>
                     <ul>
-                        <li>Use the <a href="http://docs.catalystcloud.io/network.html#virtual-private-networks">docs</a> to setup a Region to Region VPN (one person per region)</li>
+                        <li>Redo something you have not fully completed</li>
+                        <li>Use the <a href="http://docs.catalystcloud.io/network.html#virtual-private-networks">docs</a> to setup a Region to Region VPN</li>
                         <li>Have a go setting up a stack using HEAT Templates in the <a href="https://github.com/catalyst/catalystcloud-orchestration">Orchestration Repo</a></li>
-                        <li>Have a go at one of the example playbooks in <a href="https://github.com/catalyst/catalystcloud-ansible">Ansible Repo</a></li>
+                        <li>Have a go at one of the example playbooks in the <a href="https://github.com/catalyst/catalystcloud-ansible">Ansible Repo</a></li>
                         <li>Have a go at setting up your first instance using python (see next slide)</li>
+                        <li>Have a go at setting up your first instance using terraform (see upcoming slide)</li>
                         <li>Follow one of the <a href="http://docs.catalystcloud.io/tutorials.html">tutorials</a> that looks interesting</li>
                     </ul>
                 </section>
@@ -468,6 +615,20 @@ IMAGE_NAME="ubuntu-14.04-x86_64"
                         <li>security_group_name = 'yourname-first-instance'</li>
                         <li>instance_name = 'yourname-first-instance'</li>
                     </ul>
+                </section>
+
+                <section>
+                    <h3>First Instance using Terraform</h3>
+                    <pre><code data-trim contenteditable>
+$ mkdir terraform && cd terraform
+$ wget https://github.com/catalyst/catalystcloud-orchestration/blob/master/terraform/first-instance/first-instance.tf
+$ wget https://releases.hashicorp.com/terraform/0.6.16/terraform_0.6.16_linux_amd64.zip
+$ unzip terraform_0.6.16_linux_amd64.zip
+$ first-instance.tf
+$ ./terraform plan
+$ ./terraform apply
+$ ./terraform destroy
+                    </code></pre>
                 </section>
 
         <script src="lib/js/head.min.js"></script>
