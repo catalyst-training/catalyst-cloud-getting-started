@@ -621,10 +621,10 @@ localhost                  : ok=6    changed=0    unreachable=0    failed=0
                     <h3>First Instance using Terraform</h3>
                     <pre><code data-trim contenteditable>
 $ mkdir terraform && cd terraform
-$ wget https://github.com/catalyst/catalystcloud-orchestration/blob/master/terraform/first-instance/first-instance.tf
+$ wget https://raw.githubusercontent.com/catalyst/catalystcloud-orchestration/master/terraform/first-instance/first-instance.tf
 $ wget https://releases.hashicorp.com/terraform/0.6.16/terraform_0.6.16_linux_amd64.zip
 $ unzip terraform_0.6.16_linux_amd64.zip
-$ first-instance.tf
+$ vi first-instance.tf
 $ ./terraform plan
 $ ./terraform apply
 $ ./terraform destroy
