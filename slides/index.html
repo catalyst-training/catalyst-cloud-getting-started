@@ -222,97 +222,6 @@
 
                 <section>
                 <section>
-                    <h3>Architecting for the cloud</h3>
-                    <ul>
-                        <li><a href="https://blog.engineyard.com/2014/pets-vs-cattle">Cattle vs pets</a></li>
-                        <li><a href="http://martinfowler.com/bliki/SnowflakeServer.html">Snowflake Servers</a> vs. <a href="http://martinfowler.com/bliki/PhoenixServer.html">Phoenix Servers</a></li>
-                        <li><a href="http://radar.oreilly.com/2015/06/an-introduction-to-immutable-infrastructure.html">Immutable infrastructure</a></li>
-                        <li>MTTR vs. MTBF</li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Immutable Architecture/Infrastructure</h3>
-                    <ul>
-                        <li>Phoenix servers</li>
-                        <li>The environment is defined in code</li>
-                        <li>If you need to change _anything_ you create a new instance and destroy the old one</li>
-                    </ul>
-                </section>
-                <!-- Large image slide -->
-                <section class="image-slide">
-                    <h2>Immutable Architecture</h2>
-                    <img src="http://s.radar.oreilly.com/wp-files/2/2015/06/immutable_infrastructure.gif" alt="Immutable Architecture" height="600" width="800">
-                </section>
-                <section>
-                    <h3>MTTR vs. MTBF</h3>
-                    <ul>
-                        <li>MTTR = Mean Time To Repair</li>
-                        <li>MTBF = Mean Time Between Failures</li>
-                        <li>MTTF = Mean Time To Failure</li>
-                        <li>MTTD = Mean Time To Detection</li>
-                        <li>A low MTTR requires a low MTTD</li>
-                        <li>A low MTTD requires a good Monitoring</li>
-                    </ul>
-                </section>
-                <section class="image-slide">
-                    <h2>MTTR vs. MTBF</h2>
-                    <img src="http://www.kitchensoap.com/wp-content/uploads/2010/11/Screen-shot-2010-11-07-at-1.08.39-PM.png" alt="MTTR vs. MTBF" height="600" width="800">
-                </section>
-                <section>
-                    <h3>MTTR vs. MTBF</h3>
-                    <ul>
-                        <li>Failures will happen, ensure you can recoverer quickly and gracefully</li>
-                        <li>Fail better by practicing and learning</li>
-                        <li>Practice failing, learn, improve, iterate</li>
-                        <li>Netflix Chaos Tools</li>
-                    </ul>
-                </section>
-                </section>
-
-                <section>
-                <section>
-                    <h3>Automation</h3>
-                    <ul>
-                        <li>Orchestration</li>
-                        <li>Configuration Management</li>
-                        <li>Application Deployment</li>
-                        <li>Provisioning</li>
-                        <li>Security &amp; Compliance</li>
-
-                    </ul>
-                </section>
-                <section>
-                    <h3>Orchestration</h3>
-                    <ul>
-                        <li><a href="https://aws.amazon.com/cloudformation/">AWS CloudFormation</a></li>
-                        <li><a href="https://wiki.openstack.org/wiki/Heat">OpenStack Heat</a></li>
-                        <li><a href="https://www.ansible.com/">Ansible</a></li>
-                        <li><a href="https://www.redhat.com/en/technologies/cloud-computing/cloudforms">Red Hat CloudForms</a></li>
-                        <li><a href="https://www.terraform.io/">Hashicorp Terraform</a></li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Configuration Management</h3>
-                    <ul>
-                        <li><a href="https://saltstack.com/">Salt</a></li>
-                        <li><a href="https://puppetlabs.com/">Puppet</a></li>
-                        <li><a href="https://www.chef.io/">Chef</a></li>
-                        <li><a href="https://www.ansible.com/">Ansible</a></li>
-                    </ul>
-                </section>
-                <section>
-                    <h3>Automated Application Deployment</h3>
-                    <ul>
-                        <li><a href="http://www.fabfile.org/">Fabric</a></li>
-                        <li><a href="http://capistranorb.com/">Capistrano</a></li>
-                        <li><a href="https://www.ansible.com/">Ansible</a></li>
-                        <li><a href="https://www.thoughtworks.com/go/">GoCD</a></li>
-                    </ul>
-                </section>
-                </section>
-
-                <section>
-                <section>
                     <h3>First Instance overview</h3>
                     <p>We are going to create an instance and its associated components using a number of different methods both manual and automated.</p>
                 </section>
@@ -427,6 +336,97 @@ IMAGE_NAME="ubuntu-14.04-x86_64"
                         <li>You will need to edit commands</li>
                         <li>After you have done it manually you can try running the bash script</li>
                     </ul>
+                </section>
+
+                <section>
+                <section>
+                    <h3>Architecting for the cloud</h3>
+                    <ul>
+                        <li><a href="https://blog.engineyard.com/2014/pets-vs-cattle">Cattle vs pets</a></li>
+                        <li><a href="http://martinfowler.com/bliki/SnowflakeServer.html">Snowflake Servers</a> vs. <a href="http://martinfowler.com/bliki/PhoenixServer.html">Phoenix Servers</a></li>
+                        <li><a href="http://radar.oreilly.com/2015/06/an-introduction-to-immutable-infrastructure.html">Immutable infrastructure</a></li>
+                        <li>MTTR vs. MTBF</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Immutable Architecture/Infrastructure</h3>
+                    <ul>
+                        <li>Phoenix servers</li>
+                        <li>The environment is defined in code</li>
+                        <li>If you need to change _anything_ you create a new instance and destroy the old one</li>
+                    </ul>
+                </section>
+                <!-- Large image slide -->
+                <section class="image-slide">
+                    <h2>Immutable Architecture</h2>
+                    <img src="http://s.radar.oreilly.com/wp-files/2/2015/06/immutable_infrastructure.gif" alt="Immutable Architecture" height="600" width="800">
+                </section>
+                <section>
+                    <h3>MTTR vs. MTBF</h3>
+                    <ul>
+                        <li>MTTR = Mean Time To Repair</li>
+                        <li>MTBF = Mean Time Between Failures</li>
+                        <li>MTTF = Mean Time To Failure</li>
+                        <li>MTTD = Mean Time To Detection</li>
+                        <li>A low MTTR requires a low MTTD</li>
+                        <li>A low MTTD requires a good Monitoring</li>
+                    </ul>
+                </section>
+                <section class="image-slide">
+                    <h2>MTTR vs. MTBF</h2>
+                    <img src="http://www.kitchensoap.com/wp-content/uploads/2010/11/Screen-shot-2010-11-07-at-1.08.39-PM.png" alt="MTTR vs. MTBF" height="600" width="800">
+                </section>
+                <section>
+                    <h3>MTTR vs. MTBF</h3>
+                    <ul>
+                        <li>Failures will happen, ensure you can recoverer quickly and gracefully</li>
+                        <li>Fail better by practicing and learning</li>
+                        <li>Practice failing, learn, improve, iterate</li>
+                        <li>Netflix Chaos Tools</li>
+                    </ul>
+                </section>
+                </section>
+
+                <section>
+                <section>
+                    <h3>Automation</h3>
+                    <ul>
+                        <li>Orchestration</li>
+                        <li>Configuration Management</li>
+                        <li>Application Deployment</li>
+                        <li>Provisioning</li>
+                        <li>Security &amp; Compliance</li>
+
+                    </ul>
+                </section>
+                <section>
+                    <h3>Orchestration</h3>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/cloudformation/">AWS CloudFormation</a></li>
+                        <li><a href="https://wiki.openstack.org/wiki/Heat">OpenStack Heat</a></li>
+                        <li><a href="https://www.ansible.com/">Ansible</a></li>
+                        <li><a href="https://www.redhat.com/en/technologies/cloud-computing/cloudforms">Red Hat CloudForms</a></li>
+                        <li><a href="https://www.terraform.io/">Hashicorp Terraform</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Configuration Management</h3>
+                    <ul>
+                        <li><a href="https://saltstack.com/">Salt</a></li>
+                        <li><a href="https://puppetlabs.com/">Puppet</a></li>
+                        <li><a href="https://www.chef.io/">Chef</a></li>
+                        <li><a href="https://www.ansible.com/">Ansible</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Automated Application Deployment</h3>
+                    <ul>
+                        <li><a href="http://www.fabfile.org/">Fabric</a></li>
+                        <li><a href="http://capistranorb.com/">Capistrano</a></li>
+                        <li><a href="https://www.ansible.com/">Ansible</a></li>
+                        <li><a href="https://www.thoughtworks.com/go/">GoCD</a></li>
+                    </ul>
+                </section>
                 </section>
 
                 <section>
