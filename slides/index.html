@@ -609,20 +609,9 @@ localhost                  : ok=6    changed=0    unreachable=0    failed=0
                         <li>Have a go setting up a stack using HEAT Templates in the <a href="https://github.com/catalyst/catalystcloud-orchestration">Orchestration Repo</a></li>
                         <li>Have a go at one of the example playbooks in the <a href="https://github.com/catalyst/catalystcloud-ansible">Ansible Repo</a></li>
                         <li>Have a go at setting up your first instance using python (see next slide)</li>
-                        <li>Have a go at setting up your first instance using terraform (see upcoming slide)</li>
+                        <li>Have a go at setting up your first instance using terraform (see upcoming slide and <a href="http://docs.catalystcloud.io/first-instance/terraform.html">docs</a>)</li>
                         <li>Follow one of the <a href="http://docs.catalystcloud.io/tutorials.html">tutorials</a> that looks interesting</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h3>First Instance using a Python SDK</h3>
-                    <ul>
-                        <li><a href="http://docs.catalystcloud.io/first-instance/libcloud-sdk.html">http://docs.catalystcloud.io/first-instance/libcloud-sdk.html</a></li>
-                        <li>Install libcloud</li>
-                        <li>Setup the networks and router manually</li>
-                        <li>keypair_name = 'yourname-first-instance-key'</li>
-                        <li>security_group_name = 'yourname-first-instance'</li>
-                        <li>instance_name = 'yourname-first-instance'</li>
+                        <li>Have a go at creating a custom bootable image using <a href="http://docs.catalystcloud.io/tutorials/using-packer-to-build-custom-bootable-images-on-the-catalyst-cloud.html">Packer</a></li>
                     </ul>
                 </section>
 
@@ -638,6 +627,18 @@ $ ./terraform plan
 $ ./terraform apply
 $ ./terraform destroy
                     </code></pre>
+                </section>
+
+                <section>
+                    <h3>First Instance using a Python SDK</h3>
+                    <ul>
+                        <li><a href="http://docs.catalystcloud.io/first-instance/libcloud-sdk.html">http://docs.catalystcloud.io/first-instance/libcloud-sdk.html</a></li>
+                        <li>Install libcloud</li>
+                        <li>Setup the networks and router manually</li>
+                        <li>keypair_name = 'yourname-first-instance-key'</li>
+                        <li>security_group_name = 'yourname-first-instance'</li>
+                        <li>instance_name = 'yourname-first-instance'</li>
+                    </ul>
                 </section>
 
         <script src="lib/js/head.min.js"></script>
