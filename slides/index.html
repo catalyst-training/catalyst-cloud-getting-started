@@ -495,7 +495,7 @@ IMAGE_NAME="ubuntu-14.04-x86_64"
                                     <li>Hosts</li>
                                     <li>Roles</li>
                                     <li>Tasks</li>
-                                    <li>Handlers</li>
+                                    <li>Handlers (multiple notifies will only trigger one reload at end of play)</li>
                                 </ul>
                             </ul>
                         </ul>
@@ -528,7 +528,6 @@ IMAGE_NAME="ubuntu-14.04-x86_64"
                         <li>Make the same request repeatedly to produce the same result</li>
                         <li>ok = I checked and the thing you wanted was already done so I skipped doing it</li>
                         <li>changed = I checked and the thing you wanted was not done so I did it</li>
-                        <li>Handlers - multiple notifies will only trigger one reload at end of play</li>
                     </ul>
                     <pre><code data-trim contenteditable>
 PLAY RECAP *********************************************************************
