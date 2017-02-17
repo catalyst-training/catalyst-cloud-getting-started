@@ -525,8 +525,11 @@ IMAGE_NAME="ubuntu-14.04-x86_64"
                                 <li>Plays</li>
                                 <ul>
                                     <li>Hosts</li>
-                                    <li>Roles</li>
+                                    <li>Variables</li>
+                                    <li>Encrypted Variables (Vault)</li>
                                     <li>Tasks</li>
+                                    <li>Includes</li>
+                                    <li>Roles</li>
                                     <li>Handlers (multiple notifies will only trigger one reload at end of play)</li>
                                 </ul>
                             </ul>
@@ -535,7 +538,6 @@ IMAGE_NAME="ubuntu-14.04-x86_64"
                 <section>
                     <h3>Playbook primitives</h3>
                     <ul>
-                        <li>Variables</li>
                         <li>Templates (jinja2)</li>
                         <li>Conditionals</li>
                         <li>Loops</li>
@@ -545,13 +547,14 @@ IMAGE_NAME="ubuntu-14.04-x86_64"
                 <section>
                     <h3>Modules</h3>
                     <ul>
-                        <li>Blob of python</li>
                         <li>Map to tasks</li>
+                        <li>Blob of python</li>
                         <li>SCP to temporary directory on target host</li>
                         <li>Execute python on target host</li>
                         <li>Returns JSON</li>
-                        <li>Code removed</li>
+                        <li>Code removed from target host</li>
                         <li>Local Ansible evaluates returned JSON</li>
+                        <li>Output ok/changed/failed for task based on returned values</li>
                     </ul>
                 </section>
                 <section>
@@ -577,7 +580,7 @@ localhost                  : ok=6    changed=0    unreachable=0    failed=0
                         <li>Cloud modules are localhost tasks</li>
                         <li>Tasks map to modules</li>
                         <li>Modules make API calls in the background</li>
-                        <li>OpenStack modules use shade</li>
+                        <li>OpenStack modules use shade (cf. boto3)</li>
                     </ul>
                 </section>
                 <section>
