@@ -1,7 +1,11 @@
-# Catalyst Cloud - getting started
+# Getting started with the Catalyst Cloud
+
+> **Note:** The canonical location for this repository is
+> https://github.com/catalyst-training/catalyst-cloud-getting-started
 
 This repository contains the slides for the [Catalyst Cloud training
-course](https://www.catalyst.net.nz/training/catalyst-cloud-training).
+course](https://www.catalyst.net.nz/training/catalyst-cloud-training). Please
+see the [course outline](OUTLINE.md) for more information.
 
 View these slides using a web browser. You can download the slides to your own
 machine by doing the following:
